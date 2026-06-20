@@ -15,7 +15,31 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "GEM7 Game Download - Official App & Earn Daily Rewards (2026)",
   description: "Download the official GEM7 Game app. Get the latest GEM7 APK, play exciting games, claim your sign-up bonus and earn real rewards. Safe, secure, and 100% verified.",
-  keywords: "GEM7, GEM7 Game, GEM7 App, GEM7 Download, GEM7 APK, GEM7 Official, GEM7 Login, GEM7 Register, GEM7 Bonus, GEM7 Hack, GEM7 Mod APK, GEM7 Real or Fake, GEM7 Customer Care, GEM7 Tricks, GEM7 Earning App",
+  keywords: "gem7aap, gem7aap.com, GEM7 AAP, GEM7, GEM7 Game, GEM7 App, GEM7 Download, GEM7 APK, GEM7 Official, GEM7 Login, Play GEM7, GEM7 Earning App, GEM7 Sign Up Bonus, GEM7 Official Website, GEM7 Real Cash Game, GEM7 App Link, GEM7 Register, GEM7 Bonus, GEM7 Hack, GEM7 Mod APK, GEM7 Real or Fake, GEM7 Customer Care, GEM7 Tricks",
+  alternates: {
+    canonical: "https://gem7aap.com",
+  },
+  openGraph: {
+    title: "GEM7 Game Download - Official App & Earn Daily Rewards",
+    description: "Download the official GEM7 Game app. Get the latest GEM7 APK, play exciting games, claim your sign-up bonus and earn real rewards.",
+    url: "https://gem7aap.com",
+    siteName: "GEM7 AAP",
+    images: [
+      {
+        url: "https://ddhp34p0t73zc.cloudfront.net/sys7/p2/uploadfile/20260609/922919822197526528.png?v=20260609155311",
+        width: 800,
+        height: 600,
+      },
+    ],
+    locale: "en_US",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "GEM7 Game Download - Official App",
+    description: "Download the official GEM7 Game app. Get the latest GEM7 APK and earn real rewards.",
+    images: ["https://ddhp34p0t73zc.cloudfront.net/sys7/p2/uploadfile/20260609/922919822197526528.png?v=20260609155311"],
+  },
   icons: {
     icon: "https://ddhp34p0t73zc.cloudfront.net/sys7/p2/uploadfile/20260609/922919822197526528.png?v=20260609155311",
   },
