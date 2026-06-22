@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 
 export default function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -13,9 +14,11 @@ export default function Header() {
     <header className="sticky top-0 z-50 bg-white/80 backdrop-blur-md shadow-sm border-b border-gray-100 transition-all">
       <div className="flex justify-between items-center max-w-5xl mx-auto px-5 py-4">
         <div className="flex items-center gap-3 text-2xl font-bold text-slate-800 tracking-wide hover:opacity-90 transition-opacity">
-          <img
+          <Image
             src="https://ddhp34p0t73zc.cloudfront.net/sys7/p2/uploadfile/20260609/922919822197526528.png?v=20260609155311"
             alt="GEM7 Logo"
+            width={40}
+            height={40}
             className="h-10 w-auto object-contain"
           />
           <span className="hidden md:inline">GEM7 OFFICIAL</span>

@@ -1,12 +1,12 @@
-import { MetadataRoute } from 'next'
- 
+import { MetadataRoute } from "next";
+
 export default function sitemap(): MetadataRoute.Sitemap {
   return [
     {
-      url: 'https://gem7aap.com',
+      url: "https://gem7aap.com",
       lastModified: new Date(),
-      changeFrequency: 'daily',
-      priority: 1.0,
+      changeFrequency: "daily",
+      priority: 1,
     },
-  ]
+  ];
 }

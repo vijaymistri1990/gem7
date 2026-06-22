@@ -1,16 +1,80 @@
+import type { Metadata } from "next";
 import Image from "next/image";
 import ImageSlider from "./components/ImageSlider";
 import Header from "./components/Header";
+import GooglebotDetector from "./components/GooglebotDetector";
+import VideoGameSchema from "./components/VideoGameSchema";
 
-export default function Home() {
+type Props = {
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
+};
+
+export async function generateMetadata(props: Props): Promise<Metadata> {
+  const searchParams = await props.searchParams;
+  const game = searchParams?.game as string | undefined;
+
+  if (game) {
+    const gameName = game.charAt(0).toUpperCase() + game.slice(1);
+    return {
+      title: `${gameName} on GEM7 Game - Play Now & Earn Rewards`,
+      description: `Play ${gameName} on the official GEM7 Game app. Get the latest GEM7 APK, enjoy ${gameName}, and earn real rewards.`,
+      openGraph: {
+        title: `${gameName} on GEM7 Game - Play Now & Earn Rewards`,
+        description: `Play ${gameName} on the official GEM7 Game app. Get the latest GEM7 APK, enjoy ${gameName}, and earn real rewards.`,
+      },
+    };
+  }
+
+  return {};
+}
+
+export default async function Home(props: Props) {
+  const searchParams = await props.searchParams;
+  const game = searchParams?.game as string | undefined;
+
   const affiliateLink =
     "https://share-rxapq9cajg.gems7.org/share/agent/AA0AYTAM?data=eyJtIjoyLCJsYW5nIjoiZW4iLCJpZCI6MX0=";
 
+  const schemaFAQ = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Is GEM7 Real or Fake?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "GEM7 Game is 100% genuine, verified, and boasts millions of active players daily with secure payment gateways."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How to Download GEM7 APK?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Click the download button, allow unknown apps in settings, and install the APK to claim your bonus."
+        }
+      }
+    ]
+  };
+
+  const schemaOrg = {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "GEM7 Official",
+    "url": "https://gem7aap.com",
+    "logo": "https://ddhp34p0t73zc.cloudfront.net/sys7/p2/uploadfile/20260609/922919822197526528.png?v=20260609155311"
+  };
+
   return (
     <>
+      <VideoGameSchema game={game} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaFAQ) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaOrg) }} />
       <Header />
 
       <main className="bg-slate-50 flex-1">
+        <GooglebotDetector />
         {/* Hero Section */}
         <section id="home" className="relative py-16 md:py-24 text-center bg-gradient-to-b from-white to-slate-50 overflow-hidden">
           {/* Subtle animated background shapes */}
@@ -28,10 +92,12 @@ export default function Home() {
 
             <div className="relative inline-block group">
               <div className="absolute -inset-1 bg-gradient-to-r from-red-600 to-rose-500 rounded-[2rem] blur opacity-25 group-hover:opacity-50 transition duration-1000 group-hover:duration-200"></div>
-              <a href={affiliateLink} target="_blank" rel="noopener noreferrer" className="relative block transition-transform duration-300 transform group-hover:-translate-y-2 group-hover:scale-105">
-                <img
+              <a href={affiliateLink} target="_blank" rel="noopener nofollow" className="relative block transition-transform duration-300 transform group-hover:-translate-y-2 group-hover:scale-105">
+                <Image
                   src="https://api-php-res-bucket-ap-south-1.s3.ap-south-1.amazonaws.com/uploadfile/20251210/857215341078515712.png?v=20260609155311"
                   alt="GEM7 Game App Icon"
+                  width={160}
+                  height={160}
                   className="w-32 h-32 md:w-40 md:h-40 rounded-3xl shadow-xl mx-auto mb-8 object-cover border-4 border-white"
                 />
               </a>
@@ -199,18 +265,18 @@ export default function Home() {
                 <div className="grid sm:grid-cols-3 gap-6 text-left mt-10">
                   <div className="bg-slate-800/80 backdrop-blur p-6 rounded-2xl border border-slate-700/50">
                     <div className="w-10 h-10 bg-red-500 rounded-full flex items-center justify-center text-xl font-bold mb-4 shadow-lg shadow-red-500/30">1</div>
-                    <h4 className="font-bold mb-2">Download APK</h4>
-                    <p className="text-slate-400 text-sm">Click the download button to get the official APK file.</p>
+                    <h3 className="font-bold mb-2 text-lg">Download APK</h3>
+                    <p className="text-slate-400 text-base">Click the download button to get the official APK file.</p>
                   </div>
                   <div className="bg-slate-800/80 backdrop-blur p-6 rounded-2xl border border-slate-700/50">
                     <div className="w-10 h-10 bg-red-500 rounded-full flex items-center justify-center text-xl font-bold mb-4 shadow-lg shadow-red-500/30">2</div>
-                    <h4 className="font-bold mb-2">Allow Unknown Apps</h4>
-                    <p className="text-slate-400 text-sm">Go to Settings &gt; Security to enable unknown sources.</p>
+                    <h3 className="font-bold mb-2 text-lg">Allow Unknown Apps</h3>
+                    <p className="text-slate-400 text-base">Go to Settings &gt; Security to enable unknown sources.</p>
                   </div>
                   <div className="bg-slate-800/80 backdrop-blur p-6 rounded-2xl border border-slate-700/50">
                     <div className="w-10 h-10 bg-red-500 rounded-full flex items-center justify-center text-xl font-bold mb-4 shadow-lg shadow-red-500/30">3</div>
-                    <h4 className="font-bold mb-2">Install & Play</h4>
-                    <p className="text-slate-400 text-sm">Open the APK, install, sign up, and claim your bonus!</p>
+                    <h3 className="font-bold mb-2 text-lg">Install & Play</h3>
+                    <p className="text-slate-400 text-base">Open the APK, install, sign up, and claim your bonus!</p>
                   </div>
                 </div>
               </div>
@@ -260,7 +326,7 @@ export default function Home() {
             
             {/* Keywords Block for aggressive SEO */}
             <div className="mt-10 pt-8 border-t border-slate-200">
-               <p className="text-xs text-slate-400 leading-relaxed text-justify">
+               <p className="text-base text-slate-500 leading-relaxed text-justify">
                  <strong>Popular Searches:</strong> GEM7, GEM7 Game, GEM7 App, GEM7 Download, GEM7 APK, GEM7 Official Website, GEM7 Login, GEM7 Register, GEM7 Sign Up Bonus, GEM7 App Download, GEM7 Game Download, GEM7 Customer Care Number, GEM7 Helpline, GEM7 Real or Fake, GEM7 Mod APK, GEM7 Hack, GEM7 Tricks, GEM7 Winning Formula, Play GEM7, GEM7 Earning App, Best Gaming App 2026, Download GEM7 Android.
                </p>
             </div>

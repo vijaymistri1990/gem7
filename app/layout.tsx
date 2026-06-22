@@ -14,8 +14,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "GEM7 Game Download - Official App & Earn Daily Rewards (2026)",
-  description: "Download the official GEM7 Game app. Get the latest GEM7 APK, play exciting games, claim your sign-up bonus and earn real rewards. Safe, secure, and 100% verified.",
+  title: "GEM7 Game Download - Official App & Earn Rewards",
+  description: "Download the official GEM7 Game app. Get the latest GEM7 APK, play exciting games, claim your sign-up bonus and earn real rewards. 100% verified.",
   keywords: "gem7aap, gem7aap.com, GEM7 AAP, GEM7, GEM7 Game, GEM7 App, GEM7 Download, GEM7 APK, GEM7 Official, GEM7 Login, Play GEM7, GEM7 Earning App, GEM7 Sign Up Bonus, GEM7 Official Website, GEM7 Real Cash Game, GEM7 App Link, GEM7 Register, GEM7 Bonus, GEM7 Hack, GEM7 Mod APK, GEM7 Real or Fake, GEM7 Customer Care, GEM7 Tricks",
   alternates: {
     canonical: "https://gem7aap.com",

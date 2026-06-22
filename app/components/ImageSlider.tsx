@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import Image from "next/image";
 
 const images = [
   "https://ddhp34p0t73zc.cloudfront.net/sys4/p4/uploadfile/20260528/918555296043917312.png?v=20260609155311",
@@ -30,10 +31,12 @@ export default function ImageSlider() {
               index === currentIndex ? "opacity-100 scale-100" : "opacity-0 scale-105"
             }`}
           >
-            <img
+            <Image
               src={img}
               alt={`Slide ${index + 1}`}
-              className="w-full h-full object-contain p-4 md:p-8"
+              fill
+              sizes="(max-width: 768px) 100vw, 1024px"
+              className="object-contain p-4 md:p-8"
             />
           </div>
         ))}
