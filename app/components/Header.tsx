@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
 
 export default function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -10,10 +11,23 @@ export default function Header() {
     setIsMobileMenuOpen(!isMobileMenuOpen);
   };
 
+  const navLinks = [
+    { name: "Home", path: "/" },
+    { name: "About", path: "/about" },
+    { name: "Games", path: "/games" },
+    { name: "Blog", path: "/blog" },
+    { name: "Reviews", path: "/reviews" },
+    { name: "FAQ", path: "/faq" },
+    { name: "Support", path: "/support" },
+  ];
+
   return (
-    <header className="sticky top-0 z-50 bg-white/80 backdrop-blur-md shadow-sm border-b border-gray-100 transition-all">
-      <div className="flex justify-between items-center max-w-5xl mx-auto px-5 py-4">
-        <div className="flex items-center gap-3 text-2xl font-bold text-slate-800 tracking-wide hover:opacity-90 transition-opacity">
+    <header className="sticky top-0 z-50 bg-white/90 backdrop-blur-md shadow-sm border-b border-gray-100 transition-all">
+      <div className="flex justify-between items-center max-w-7xl mx-auto px-5 py-4">
+        <Link
+          href="/"
+          className="flex items-center gap-3 text-2xl font-bold text-slate-800 tracking-wide hover:opacity-90 transition-opacity"
+        >
           <Image
             src="https://ddhp34p0t73zc.cloudfront.net/sys7/p2/uploadfile/20260609/922919822197526528.png?v=20260609155311"
             alt="GEM7 Logo"
@@ -22,49 +36,27 @@ export default function Header() {
             className="h-10 w-auto object-contain"
           />
           <span className="hidden md:inline">GEM7 OFFICIAL</span>
-        </div>
+        </Link>
 
         {/* Desktop Navigation */}
         <nav className="hidden md:block">
           <ul className="flex gap-6 list-none m-0 p-0">
-            <li>
-              <a
-                href="#home"
-                className="text-gray-600 font-semibold hover:text-red-600 transition-colors relative after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-0 after:bg-red-600 after:transition-all hover:after:w-full"
-              >
-                Home
-              </a>
-            </li>
-            <li>
-              <a
-                href="#about"
-                className="text-gray-600 font-semibold hover:text-red-600 transition-colors relative after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-0 after:bg-red-600 after:transition-all hover:after:w-full"
-              >
-                About
-              </a>
-            </li>
-            <li>
-              <a
-                href="#download"
-                className="text-gray-600 font-semibold hover:text-red-600 transition-colors relative after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-0 after:bg-red-600 after:transition-all hover:after:w-full"
-              >
-                Download
-              </a>
-            </li>
-            <li>
-              <a
-                href="#features"
-                className="text-gray-600 font-semibold hover:text-red-600 transition-colors relative after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-0 after:bg-red-600 after:transition-all hover:after:w-full"
-              >
-                Features
-              </a>
-            </li>
+            {navLinks.map((link) => (
+              <li key={link.name}>
+                <Link
+                  href={link.path}
+                  className="text-gray-600 font-semibold hover:text-[var(--color-primary)] transition-colors relative after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-0 after:bg-[var(--color-primary)] after:transition-all hover:after:w-full"
+                >
+                  {link.name}
+                </Link>
+              </li>
+            ))}
           </ul>
         </nav>
 
         {/* Mobile Menu Toggle Button */}
         <button
-          className="md:hidden flex items-center justify-center p-2 rounded-md text-gray-600 hover:text-red-600 hover:bg-gray-50 focus:outline-none transition-colors"
+          className="md:hidden flex items-center justify-center p-2 rounded-md text-gray-600 hover:text-[var(--color-primary)] hover:bg-gray-50 focus:outline-none transition-colors"
           onClick={toggleMenu}
           aria-label="Toggle menu"
         >
@@ -74,7 +66,6 @@ export default function Header() {
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
-              xmlns="http://www.w3.org/2000/svg"
             >
               <path
                 strokeLinecap="round"
@@ -89,7 +80,6 @@ export default function Header() {
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
-              xmlns="http://www.w3.org/2000/svg"
             >
               <path
                 strokeLinecap="round"
@@ -106,42 +96,17 @@ export default function Header() {
       {isMobileMenuOpen && (
         <nav className="md:hidden bg-white border-t border-gray-100 shadow-inner absolute top-full left-0 w-full">
           <ul className="flex flex-col list-none m-0 p-0">
-            <li>
-              <a
-                href="#home"
-                className="block px-6 py-4 text-gray-700 font-semibold hover:bg-gray-50 hover:text-red-600 transition-colors border-b border-gray-50"
-                onClick={toggleMenu}
-              >
-                Home
-              </a>
-            </li>
-            <li>
-              <a
-                href="#about"
-                className="block px-6 py-4 text-gray-700 font-semibold hover:bg-gray-50 hover:text-red-600 transition-colors border-b border-gray-50"
-                onClick={toggleMenu}
-              >
-                About
-              </a>
-            </li>
-            <li>
-              <a
-                href="#download"
-                className="block px-6 py-4 text-gray-700 font-semibold hover:bg-gray-50 hover:text-red-600 transition-colors border-b border-gray-50"
-                onClick={toggleMenu}
-              >
-                Download
-              </a>
-            </li>
-            <li>
-              <a
-                href="#features"
-                className="block px-6 py-4 text-gray-700 font-semibold hover:bg-gray-50 hover:text-red-600 transition-colors"
-                onClick={toggleMenu}
-              >
-                Features
-              </a>
-            </li>
+            {navLinks.map((link) => (
+              <li key={link.name}>
+                <Link
+                  href={link.path}
+                  className="block px-6 py-4 text-gray-700 font-semibold hover:bg-gray-50 hover:text-[var(--color-primary)] transition-colors border-b border-gray-50"
+                  onClick={toggleMenu}
+                >
+                  {link.name}
+                </Link>
+              </li>
+            ))}
           </ul>
         </nav>
       )}
