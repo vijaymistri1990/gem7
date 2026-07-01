@@ -6,6 +6,7 @@ import {
   TrustBadges,
   VerifiedBadge,
 } from "./components/TrustBadge";
+import ImageCarousel from "./components/ImageCarousel";
 
 export default function Home() {
   const schema = {
@@ -221,31 +222,7 @@ export default function Home() {
                 </div>
               </div>
             </div>
-            <div className="relative rounded-2xl overflow-hidden shadow-2xl border border-slate-200 bg-white">
-              {/* Using a placeholder for gameplay screenshot */}
-              <div className="aspect-[4/3] bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center text-white relative">
-                <div className="text-center p-8">
-                  <div className="w-20 h-20 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-4 backdrop-blur-sm">
-                    <svg
-                      className="w-10 h-10"
-                      fill="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path d="M21 15.999V8a2 2 0 0 0-2-2h-3.5a1.5 1.5 0 0 1-1.5-1.5v-1a1.5 1.5 0 0 0-1.5-1.5h-5A1.5 1.5 0 0 0 6 3.5v1A1.5 1.5 0 0 1 4.5 6H3a2 2 0 0 0-2 2v7.999a2 2 0 0 0 2 2h2.5a1.5 1.5 0 0 1 1.5 1.5v1A1.5 1.5 0 0 0 8.5 22h5a1.5 1.5 0 0 0 1.5-1.5v-1a1.5 1.5 0 0 1 1.5-1.5H19a2 2 0 0 0 2-2zM8 12a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm10.5 2.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2zm1.5-3a1 1 0 1 1 0-2 1 1 0 0 1 0 2z" />
-                    </svg>
-                  </div>
-                  <h4 className="text-2xl font-bold mb-2">
-                    Action-Packed Gameplay
-                  </h4>
-                  <p className="text-white/80">
-                    Experience high-quality graphics and responsive controls.
-                  </p>
-                </div>
-              </div>
-              <div className="bg-slate-900 text-white p-4 text-center text-sm font-medium">
-                Actual app interface showcasing the main lobby.
-              </div>
-            </div>
+            <ImageCarousel />
           </div>
         </div>
       </section>
